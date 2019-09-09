@@ -21,6 +21,9 @@ using System.Windows.Threading;
 using System.Windows.Controls;
 using System.IO;
 using Path = System.Windows.Shapes.Path;
+using WindowColor.WindowWrapper;
+using WindowColor.ToolPane;
+using Microsoft.VisualStudio.OLE.Interop;
 //https://github.com/mayerwin/vs-customize-window-title/blob/master/CustomizeVSWindowTitle/Globals.cs
 
 namespace WindowColor
@@ -29,7 +32,9 @@ namespace WindowColor
     [ProvideOptionPage(typeof(Options), "Environment", "miSolutionName", 0, 0, true)]
     [Guid(WindowColorPackage.PackageGuidString)]
     [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
-    public sealed class WindowColorPackage : AsyncPackage
+    [ProvideMenuResource("Menus.ctmenu", 1)]
+    [ProvideToolWindow(typeof(SolutionOptionWindow))]
+    public sealed class WindowColorPackage : AsyncPackage, IVsPersistSolutionOpts
     {
         public WindowColorPackage()
         {
@@ -40,9 +45,6 @@ namespace WindowColor
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-
-
-            Options = (Options)GetDialogPage(typeof(Options));
 
             DTE = (DTE2)GetGlobalService(typeof(DTE));
 
@@ -57,25 +59,44 @@ namespace WindowColor
             SolutionEvents.OnAfterRenameSolution += (_, __) => OnSolutionUpdated();
             SolutionEvents.OnAfterOpenSolution += (_, __) => OnSolutionOpend();
             SolutionEvents.OnAfterCloseSolution += (_, __) => OnSolutionClosed();
+            SolutionEvents.OnBeforeCloseSolution += (_, __) => CloseToolWindow();
 
             bool isSolutionLoaded = await IsSolutionLoadedAsync();
             if (isSolutionLoaded) OnSolutionOpend();
+            await SolutionOptionWindowCommand.InitializeAsync(this);
+            UserOption = new UserOptions();
+            UserOption.LoadSetting();
+            Settings = new SettingStore((Options)GetDialogPage(typeof(Options)), UserOption);
 
+            SolutionOptionWindow.ConnectExisits(this);
         }
+        private UserOptions UserOption;
         protected override void Dispose(bool disposing)
         {
+            CloseToolWindow();
             Timer.Stop();
             base.Dispose(disposing);
         }
         DTE2 DTE;
         List<VSWindowWrapper> Windows;
         DispatcherTimer Timer;
-        Options Options;
+        public SettingStore Settings;
         string SolutionName;
 
         private void OnSolutionClosed()
         {
             Windows.Clear();
+        }
+
+        private void CloseToolWindow()
+        {
+            Application.Current.Dispatcher.Invoke(() => {
+                try
+                {
+                    SolutionOptionWindow.Close(this);
+                }
+                catch { }
+            });
         }
 
         private void OnSolutionOpend()
@@ -93,8 +114,8 @@ namespace WindowColor
             Application.Current.Dispatcher.Invoke(() => {
                 foreach(Window w in Application.Current.Windows)
                 {
-                    VSWindowWrapper ww = VSMainWindowWrapper.Create(w, Options);
-                    if (ww == null) ww = VSFloatingWindowWrapper.Create(w, Options);
+                    VSWindowWrapper ww = VSMainWindowWrapper.Create(w, Settings);
+                    if (ww == null) ww = VSFloatingWindowWrapper.Create(w, Settings);
                     if (ww != null)
                     {
                         Windows.Add(ww);
@@ -123,6 +144,23 @@ namespace WindowColor
             ThreadHelper.ThrowIfNotOnUIThread();
             SolutionName = System.IO.Path.GetFileNameWithoutExtension(DTE.Solution.FileName);
             UpdateWindow();
+        }
+        
+        public int SaveUserOptions(IVsSolutionPersistence pPersistence)
+        {
+            return UserOption?.SaveUserOptions(pPersistence) ?? 0;
+        }
+        public int LoadUserOptions(IVsSolutionPersistence pPersistence, uint grfLoadOpts)
+        {
+            return UserOption?.LoadUserOptions(pPersistence, grfLoadOpts) ?? 0;
+        }
+        public int WriteUserOptions(IStream pOptionsStream, string pszKey)
+        {
+            return UserOption?.WriteUserOptions(pOptionsStream, pszKey) ?? 0;
+        }
+        public int ReadUserOptions(IStream pOptionsStream, string pszKey)
+        {
+            return UserOption?.ReadUserOptions(pOptionsStream, pszKey) ?? 0;
         }
         #endregion
     }

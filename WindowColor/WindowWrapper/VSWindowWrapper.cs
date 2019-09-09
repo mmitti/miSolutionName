@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace WindowColor
+namespace WindowColor.WindowWrapper
 {
     public abstract class VSWindowWrapper
     {
@@ -16,7 +16,7 @@ namespace WindowColor
         public event Action<VSWindowWrapper> Closed;
         protected Window Window;
         protected string mTitle;
-        protected Options Option;
+        protected SettingStore Settings;
         public string Tilte
         {
             set
@@ -30,11 +30,11 @@ namespace WindowColor
 
         public bool IsLoaded => Window?.IsLoaded ?? false;
 
-        public VSWindowWrapper(Window w, Options options)
+        public VSWindowWrapper(Window w, SettingStore settings)
         {
-            Window = TryParseWindow(w, options);
+            Settings = settings;
+            Window = TryParseWindow(w, settings);
             if (Window == null) return;
-            Option = options;
             Window.Closed += OnClosed; ;
             Window.Activated += OnActivated;
             Window.Deactivated += OnDeactivated;
@@ -45,7 +45,7 @@ namespace WindowColor
         {
             Application.Current.Dispatcher.Invoke(action);
         }
-        protected abstract Window TryParseWindow(Window w, Options options);        
+        protected abstract Window TryParseWindow(Window w, SettingStore settings);        
 
         protected void OnClosed(object sender, EventArgs e)
         {
@@ -72,13 +72,13 @@ namespace WindowColor
             {
                 if (Window.IsActive)
                 {
-                    Border.Background = new SolidColorBrush(Option.DefaultActiveBackgroundColor);
-                    Text.Foreground = new SolidColorBrush(Option.DefaultActiveForegroundColor);
+                    Border.Background = new SolidColorBrush(Settings.ActiveBackground.Value);
+                    Text.Foreground = new SolidColorBrush(Settings.ActiveForeground.Value);
                 }
                 else
                 {
-                    Border.Background = new SolidColorBrush(Option.DefaultInActiveBackgroundColor);
-                    Text.Foreground = new SolidColorBrush(Option.DefaultInActiveForegroundColor);
+                    Border.Background = new SolidColorBrush(Settings.InActiveBackground.Value);
+                    Text.Foreground = new SolidColorBrush(Settings.InActiveForeground.Value);
                 }
             });
         }

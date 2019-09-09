@@ -8,11 +8,21 @@ using Microsoft.VisualStudio.Shell;
 using System.Windows.Media;
 using System.Drawing;
 using Color = System.Windows.Media.Color;
+using Microsoft.VisualStudio.Threading;
+using Microsoft.VisualStudio.Shell.Settings;
+using Task = System.Threading.Tasks.Task;
+using Microsoft.VisualStudio.Settings;
+using System.Reflection;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using Microsoft;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace WindowColor
 {
     public class Options : DialogPage
     {
+        #region Options
         private bool mPenguin = true;
 
         [Category("Experiment")]
@@ -31,8 +41,8 @@ namespace WindowColor
         [Description("Solution name text Color(for window active). Default Value:#40568d")]
         public string DefaultActiveForegroundColorStr
         {
-            get { return ConvertColor(mDefaultActiveForegroundColor); }
-            set { mDefaultActiveForegroundColor = ConvertColor(value, mDefaultActiveForegroundColor); }
+            get { return Common.ConvertColor(mDefaultActiveForegroundColor); }
+            set { mDefaultActiveForegroundColor = Common.ConvertColor(value, mDefaultActiveForegroundColor); }
         }
 
         private Color mDefaultInActiveForegroundColor = Color.FromRgb(0x66, 0x66, 0x66);
@@ -42,8 +52,8 @@ namespace WindowColor
         [Description("Solution name text Color(for window inactive). Default Value:#666666")]
         public string DefaultInActiveForegroundColorStr
         {
-            get { return ConvertColor(mDefaultInActiveForegroundColor); }
-            set { mDefaultInActiveForegroundColor = ConvertColor(value, mDefaultInActiveForegroundColor); }
+            get { return Common.ConvertColor(mDefaultInActiveForegroundColor); }
+            set { mDefaultInActiveForegroundColor = Common.ConvertColor(value, mDefaultInActiveForegroundColor); }
         }
 
         private Color mDefaultActiveBackgroundColor = Color.FromRgb(0xD9, 0xE0, 0xF8);
@@ -53,8 +63,8 @@ namespace WindowColor
         [Description("Solution name bar Color(for window active). Default Value:#d9e0f8")]
         public string DefaultActiveBackgroundColorStr
         {
-            get { return ConvertColor(mDefaultActiveBackgroundColor); }
-            set { mDefaultActiveBackgroundColor = ConvertColor(value, mDefaultActiveBackgroundColor); }
+            get { return Common.ConvertColor(mDefaultActiveBackgroundColor); }
+            set { mDefaultActiveBackgroundColor = Common.ConvertColor(value, mDefaultActiveBackgroundColor); }
         }
 
         private Color mDefaultInActiveBackgroundColor = Color.FromRgb(0xFF, 0xFF, 0xFF);
@@ -64,27 +74,11 @@ namespace WindowColor
         [Description("Solution name bar Color(for window inactive). Default Value:#ffffff")]
         public string DefaultInActiveBackgroundColorStr
         {
-            get { return ConvertColor(mDefaultInActiveBackgroundColor); }
-            set { mDefaultInActiveBackgroundColor = ConvertColor(value, mDefaultInActiveBackgroundColor); }
+            get { return Common.ConvertColor(mDefaultInActiveBackgroundColor); }
+            set { mDefaultInActiveBackgroundColor = Common.ConvertColor(value, mDefaultInActiveBackgroundColor); }
         }
+        #endregion
 
-
-        private Color ConvertColor(string hexstr, Color current)
-        {
-            try
-            {
-                var c = ColorTranslator.FromHtml(hexstr);
-                return Color.FromRgb(c.R, c.G, c.B);
-            }
-            catch
-            {
-            }
-            return current;
-        }
-        private string ConvertColor(Color current)
-        {
-            return $"#{current.R:X2}{current.G:X2}{current.B:X2}";
-        }
 
     }
 }
