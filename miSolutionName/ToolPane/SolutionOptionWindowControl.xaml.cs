@@ -1,4 +1,4 @@
-﻿namespace WindowColor.ToolPane
+﻿namespace miSolutionName.ToolPane
 {
     using Microsoft.VisualStudio.Settings;
     using Microsoft.VisualStudio.Shell;

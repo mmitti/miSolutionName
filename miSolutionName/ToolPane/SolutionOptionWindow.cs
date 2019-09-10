@@ -1,4 +1,4 @@
-﻿namespace WindowColor.ToolPane
+﻿namespace miSolutionName.ToolPane
 {
     using System;
     using System.Runtime.InteropServices;
@@ -37,7 +37,7 @@
             Initialized = true;
         }
 
-        public static void Show(WindowColorPackage package)
+        public static void Show(miSolutionNamePackage package)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
             var window = FindWindow(package);
@@ -50,7 +50,7 @@
             var frame = (IVsWindowFrame)window.Frame;
             Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(frame.Show());
         }
-        public static void ConnectExisits(WindowColorPackage package)
+        public static void ConnectExisits(miSolutionNamePackage package)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
             var window = FindWindow(package, false);
@@ -58,7 +58,7 @@
                 window.Init(package.Settings);
         }
 
-        public static void Close(WindowColorPackage package)
+        public static void Close(miSolutionNamePackage package)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
             var window = FindWindow(package, false);
@@ -68,7 +68,7 @@
             frame.CloseFrame((uint)__FRAMECLOSE.FRAMECLOSE_NoSave);
         }
 
-        private static SolutionOptionWindow FindWindow(WindowColorPackage package, bool create=true)
+        private static SolutionOptionWindow FindWindow(miSolutionNamePackage package, bool create=true)
         {
             var window = package.FindToolWindow(typeof(SolutionOptionWindow), 0, create) as SolutionOptionWindow;
             if ((null == window) || (null == window.Frame))

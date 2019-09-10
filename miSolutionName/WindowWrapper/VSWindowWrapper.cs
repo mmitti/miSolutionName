@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace WindowColor.WindowWrapper
+namespace miSolutionName.WindowWrapper
 {
     public abstract class VSWindowWrapper
     {

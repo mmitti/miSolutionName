@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
-namespace WindowColor.Extensions
+namespace miSolutionName.Extensions
 {
 
     static class UIElementExtensions

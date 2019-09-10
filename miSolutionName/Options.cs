@@ -18,14 +18,14 @@ using System.Runtime.Serialization.Formatters.Binary;
 using Microsoft;
 using Microsoft.VisualStudio.Shell.Interop;
 
-namespace WindowColor
+namespace miSolutionName
 {
     public class Options : DialogPage
     {
         #region Options
-        private bool mPenguin = true;
+        private bool mPenguin = false;
 
-        [Category("Experiment")]
+        [LocalizedCategory("Experiment")]
         [DisplayName("Penguin")]
         [Description("Change Visual Studio icon to penguin.")]
         public bool Penguin
@@ -36,9 +36,9 @@ namespace WindowColor
 
         private Color mDefaultActiveForegroundColor = Color.FromRgb(0x40, 0x56, 0x8D);
         internal Color DefaultActiveForegroundColor => mDefaultActiveForegroundColor;
-        [Category("DefaultColor")]
+        [LocalizedCategory("DefaultColor")]
         [DisplayName("Active/Foreground")]
-        [Description("Solution name text Color(for window active). Default Value:#40568d")]
+        [LocalizedDescription("ActiveForegroundDescription")]
         public string DefaultActiveForegroundColorStr
         {
             get { return Common.ConvertColor(mDefaultActiveForegroundColor); }
@@ -47,9 +47,9 @@ namespace WindowColor
 
         private Color mDefaultInActiveForegroundColor = Color.FromRgb(0x66, 0x66, 0x66);
         internal Color DefaultInActiveForegroundColor => mDefaultInActiveForegroundColor;
-        [Category("DefaultColor")]
+        [LocalizedCategory("DefaultColor")]
         [DisplayName("InActive/Foreground")]
-        [Description("Solution name text Color(for window inactive). Default Value:#666666")]
+        [LocalizedDescription("InActiveForegroundDescription")]
         public string DefaultInActiveForegroundColorStr
         {
             get { return Common.ConvertColor(mDefaultInActiveForegroundColor); }
@@ -58,9 +58,9 @@ namespace WindowColor
 
         private Color mDefaultActiveBackgroundColor = Color.FromRgb(0xD9, 0xE0, 0xF8);
         internal Color DefaultActiveBackgroundColor => mDefaultActiveBackgroundColor;
-        [Category("DefaultColor")]
+        [LocalizedCategory("DefaultColor")]
         [DisplayName("Active/Background")]
-        [Description("Solution name bar Color(for window active). Default Value:#d9e0f8")]
+        [LocalizedDescription("ActiveBackgroundDescription")]
         public string DefaultActiveBackgroundColorStr
         {
             get { return Common.ConvertColor(mDefaultActiveBackgroundColor); }
@@ -69,9 +69,9 @@ namespace WindowColor
 
         private Color mDefaultInActiveBackgroundColor = Color.FromRgb(0xFF, 0xFF, 0xFF);
         internal Color DefaultInActiveBackgroundColor => mDefaultInActiveBackgroundColor;
-        [Category("DefaultColor")]
+        [LocalizedCategory("DefaultColor")]
         [DisplayName("InActive/Background")]
-        [Description("Solution name bar Color(for window inactive). Default Value:#ffffff")]
+        [LocalizedDescription("InActiveBackgroundDescription")]
         public string DefaultInActiveBackgroundColorStr
         {
             get { return Common.ConvertColor(mDefaultInActiveBackgroundColor); }

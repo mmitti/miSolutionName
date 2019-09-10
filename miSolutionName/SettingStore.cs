@@ -9,7 +9,7 @@ using System.Windows.Media;
 using Reactive.Bindings.Extensions;
 using System.Linq.Expressions;
 
-namespace WindowColor
+namespace miSolutionName
 {
     public class SettingStore
     {

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="miSolutionName.123ef3ba-f6ba-4170-9ed3-f1f3753ccd0c" Version="1.0" Language="en-US" Publisher="mmitti" />
+        <DisplayName>miSolutionName</DisplayName>
+        <Description xml:space="preserve">Modify solution name ui in title bar for Visual Studio 2019.</Description>
+        <MoreInfo>https://github.com/mmitti/miSolutionName</MoreInfo>
+        <Tags>Solution name, Window, Tools,Color, Customization</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0, 17.0)" />
+        <InstallationTarget Version="[16.0,17.0)" Id="Microsoft.VisualStudio.Pro" />
+        <InstallationTarget Version="[16.0,17.0)" Id="Microsoft.VisualStudio.Enterprise" />
+        <InstallationTarget Version="[16.0,17.0)" Id="Microsoft.VisualStudio.VSWinExpress" />
+        <InstallationTarget Version="[16.0,17.0)" Id="Microsoft.VisualStudio.VWDExpress" />
+        <InstallationTarget Version="[16.0,17.0)" Id="Microsoft.VisualStudio.VSWinDesktopExpress" />
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.7,)" />
+    </Dependencies>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[16.0,17.0)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="miSolutionName" Path="|miSolutionName;PkgdefProjectOutputGroup|" />
+    </Assets>
+</PackageManifest>

@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
 
-namespace WindowColor.ToolPane
+namespace miSolutionName.ToolPane
 {
     /// <summary>
     /// Command handler
@@ -87,7 +87,7 @@ namespace WindowColor.ToolPane
         private void Execute(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            SolutionOptionWindow.Show(package as WindowColorPackage);
+            SolutionOptionWindow.Show(package as miSolutionNamePackage);
         }
     }
 }
