@@ -5,7 +5,10 @@
         <DisplayName>miSolutionName</DisplayName>
         <Description xml:space="preserve">Modify solution name ui in title bar for Visual Studio 2019.</Description>
         <MoreInfo>https://github.com/mmitti/miSolutionName</MoreInfo>
+        <Icon>Resources\icon.png</Icon>
+        <PreviewImage>Resources\example.png</PreviewImage>
         <Tags>Solution name, Window, Tools,Color, Customization</Tags>
+        <Preview>true</Preview>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0, 17.0)" />
