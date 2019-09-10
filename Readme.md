@@ -17,27 +17,29 @@ Visual Studio2019の右上に表示されるソリューション名のUIをカスタマイズします。
   This extension can load Window Colors config file(WIP).
 
 # Usage/使い方
-* DefaultColor/デフォルト配色
-  You can set colors in Visual Studio Options. This setting will apply to any 
-  solution except enable .suo specific option.
-  If you want to change colors, Open [Tools]>[Options]>[Environment]>[miSolutionName].
-  VisualStudioのオプションでデフォルトの配色を設定できます。この設定は.suo固有の
-  オプションが無効のソリューションに適用されます。
-  変更するには「ツール」>「オプション」>「環境」>「miSolutionName」を開きます。
+* DefaultColor/デフォルト配色  
+  You can set colors in Visual Studio Options. This setting will apply to any  
+  solution except enable .suo specific option.  
+  If you want to change colors, Open [Tools]>[Options]>[Environment]>[miSolutionName].  
+  
+  VisualStudioのオプションでデフォルトの配色を設定できます。この設定は.suo固有の  
+  オプションが無効のソリューションに適用されます。  
+  変更するには「ツール」>「オプション」>「環境」>「miSolutionName」を開きます。  
   
 * .suo-Specific Option/.suo固有の設定
-  Solution User Option(.suo) specific setting. 
-  If Enabled, you can change colors per solution.
-  If you want to set colors, Open Editor [Extensions]>[miSolutionName Setting] and,
-  (1) Check [Enable .suo Options]
-  (2) Fill colors text box(hex color format).
-  Those settings will saved to .suo file. So you have to set per solution.
-  ソリューションユーザーオプション固有の設定を変更できます。
-  この設定を有効にするとソリューションごとに配色を指定することができます。
-  有効にするには「拡張機能」>「miSolutionName設定」でエディターを開き、
-  (1) 「.suoに格納されている設定を有効にする」にチェックを入れ
-  (2) 配色内のテキストボックスにカラーコードを入力してください。
-  これらの設定は.suoファイルに保存されるため、ソリューションごとに設定する必要があります。
+  Solution User Option(.suo) specific setting.  
+  If Enabled, you can change colors per solution.  
+  If you want to set colors, Open Editor [Extensions]>[miSolutionName Setting] and,  
+  (1) Check [Enable .suo Options]  
+  (2) Fill colors text box(hex color format).  
+  Those settings will saved to .suo file. So you have to set per solution.  
+  
+  ソリューションユーザーオプション固有の設定を変更できます。  
+  この設定を有効にするとソリューションごとに配色を指定することができます。  
+  有効にするには「拡張機能」>「miSolutionName設定」でエディターを開き、  
+  (1) 「.suoに格納されている設定を有効にする」にチェックを入れ  
+  (2) 配色内のテキストボックスにカラーコードを入力してください。  
+  これらの設定は.suoファイルに保存されるため、ソリューションごとに設定する必要があります。  
 
 # Misc
 Konyanyatiwa. This is a Japasene. Kore, nihongo yanen.
