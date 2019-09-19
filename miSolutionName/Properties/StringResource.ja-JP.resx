@@ -10,7 +10,7 @@
     various data types are done through the TypeConverter classes 
     associated with the data types.
     
-    例:
+    Example:
     
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
@@ -142,7 +142,7 @@
     <value>配色</value>
   </data>
   <data name="EditorColorDescription" xml:space="preserve">
-    <value>.suo固有の配色設定。空欄にした場合はVisual Studioの設定で指定するデフォルト配色が利用されます。</value>
+    <value>.suo固有の配色設定。空欄にした場合はVisual Studioの設定で指定するデフォルト配色やVSCodeの設定ファイルが利用されます。</value>
   </data>
   <data name="EditorDescription" xml:space="preserve">
     <value>ソリューションユーザーオプションファイル(.suo)固有の設定を変更します。こちらが設定されている場合、Visual Studioの設定より優先されて適用されます。</value>
@@ -153,7 +153,7 @@
   <data name="General" xml:space="preserve">
     <value>全般</value>
   </data>
-   <data name="EditorAcriveBackgroundDescription" xml:space="preserve">
+  <data name="EditorAcriveBackgroundDescription" xml:space="preserve">
     <value>ウィンドウがアクティブのときの背景色 例:#d9e0f8</value>
   </data>
   <data name="EditorAcriveForegroundDescription" xml:space="preserve">
@@ -164,5 +164,17 @@
   </data>
   <data name="EditorInAcriveForegroundDescription" xml:space="preserve">
     <value>ウィンドウが非アクティブのときのテキスト色 例:#666666</value>
+  </data>
+  <data name="EditorLoadVSCConfig" xml:space="preserve">
+    <value>VSCodeの設定やワークスペースを探索し、設定ファイルを読み込みます。</value>
+  </data>
+  <data name="Finding" xml:space="preserve">
+    <value>探索中</value>
+  </data>
+  <data name="LoadedVSCSetting" xml:space="preserve">
+    <value>VSCodeの設定ファイルが見つかりました</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>見つかりませんでした</value>
   </data>
 </root>

@@ -142,7 +142,7 @@
     <value>Solution name text Color(for window active). Example:#40568d</value>
   </data>
   <data name="EditorColorDescription" xml:space="preserve">
-    <value>.suo specific color setting. If empty, use default color(from Visual Studio settings).</value>
+    <value>.suo specific color setting. If empty, use default color(from Visual Studio settings) or VSCode setting.</value>
   </data>
   <data name="EditorDescription" xml:space="preserve">
     <value>miSolutionName options in solution file. This setting priority over Visual Studio Options.</value>
@@ -164,5 +164,17 @@
   </data>
   <data name="InActiveForegroundDescription" xml:space="preserve">
     <value>Solution name text Color(for window inactive). Default Value:#666666</value>
+  </data>
+  <data name="EditorLoadVSCConfig" xml:space="preserve">
+    <value>Find and load VS Code settings or workspace.</value>
+  </data>
+  <data name="Finding" xml:space="preserve">
+    <value>Finding</value>
+  </data>
+  <data name="LoadedVSCSetting" xml:space="preserve">
+    <value>Found VSCode settings</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Not Found</value>
   </data>
 </root>

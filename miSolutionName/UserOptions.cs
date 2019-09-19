@@ -25,6 +25,7 @@ namespace miSolutionName
             public string InActiveBackground;
             public string InActiveForeground;
             public bool IsEnabled;
+            public bool IsFindVSCExtConfig;
         }
         Data mData;
 
@@ -54,6 +55,13 @@ namespace miSolutionName
             get { return mData.IsEnabled; }
             set { SetProperty(ref mData.IsEnabled, value); }
         }
+
+        public bool IsFindVSCExtConfig
+        {
+            get { return mData.IsFindVSCExtConfig; }
+            set { SetProperty(ref mData.IsFindVSCExtConfig, value); }
+        }
+
 
 
         #region LoadSaveFunctions

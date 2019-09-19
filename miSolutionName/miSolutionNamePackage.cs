@@ -67,8 +67,11 @@ namespace miSolutionName
             UserOption = new UserOptions();
             UserOption.LoadSetting();
             Settings = new SettingStore((Options)GetDialogPage(typeof(Options)), UserOption);
-
-            SolutionOptionWindow.ConnectExisits(this);
+            if (isSolutionLoaded)
+            {
+                Settings.SolutionFilePath.Value = DTE.Solution.FileName;
+            }
+             SolutionOptionWindow.ConnectExisits(this);
         }
         private UserOptions UserOption;
         protected override void Dispose(bool disposing)
@@ -86,6 +89,7 @@ namespace miSolutionName
         private void OnSolutionClosed()
         {
             Windows.Clear();
+            Settings.SolutionFilePath.Value = null; 
         }
 
         private void CloseToolWindow()
@@ -105,6 +109,8 @@ namespace miSolutionName
             Timer.Interval = new TimeSpan(0, 0, 5);
             Timer.Tick += (_, __) => { UpdateWindow(); };
             Timer.Start();
+            if (Settings != null)
+                Settings.SolutionFilePath.Value = DTE.Solution.FileName;
             OnSolutionUpdated();
         }
 

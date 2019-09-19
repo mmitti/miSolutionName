@@ -124,7 +124,7 @@ namespace miSolutionName.Properties {
         }
         
         /// <summary>
-        ///   .suo specific color setting. If empty, use default color(from Visual Studio settings). に類似しているローカライズされた文字列を検索します。
+        ///   .suo specific color setting. If empty, use default color(from Visual Studio settings) or VSCode setting. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string EditorColorDescription {
             get {
@@ -169,11 +169,29 @@ namespace miSolutionName.Properties {
         }
         
         /// <summary>
+        ///   Find and load VS Code settings or workspace. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string EditorLoadVSCConfig {
+            get {
+                return ResourceManager.GetString("EditorLoadVSCConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Experiment に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Experiment {
             get {
                 return ResourceManager.GetString("Experiment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Finding に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Finding {
+            get {
+                return ResourceManager.GetString("Finding", resourceCulture);
             }
         }
         
@@ -201,6 +219,24 @@ namespace miSolutionName.Properties {
         public static string InActiveForegroundDescription {
             get {
                 return ResourceManager.GetString("InActiveForegroundDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Found VSCode settings に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string LoadedVSCSetting {
+            get {
+                return ResourceManager.GetString("LoadedVSCSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Not Found に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NotFound {
+            get {
+                return ResourceManager.GetString("NotFound", resourceCulture);
             }
         }
     }

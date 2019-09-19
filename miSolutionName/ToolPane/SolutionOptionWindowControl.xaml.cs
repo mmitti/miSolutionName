@@ -6,6 +6,7 @@
     using Reactive.Bindings;
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.IO;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Data;
@@ -49,6 +50,7 @@
             Settings = settings;
             DataContext = Settings;
             IsEnabled = true;
+            UpdateVSConfig(this, null);
         }
 
         private void ColorTextChanged(object sender, TextChangedEventArgs e)
@@ -68,6 +70,20 @@
             if (sender == ActiveForeground) set(Settings.UserActiveForeground);
             if (sender == InActiveBackground) set(Settings.UserInActiveBackground);
             if (sender == InActiveForeground) set(Settings.UserInActiveForeground);
+        }
+
+        private void UpdateVSConfig(object sender, RoutedEventArgs e)
+        {
+            if (Settings.UserOptionFindVSCExtConfig.Value)
+            {
+                VSCodeConfigPath.Text = $"{Properties.StringResource.Finding}...";
+                Settings.SolutionFilePath.ForceNotify();
+                if (Settings.VSCodeConfig.Value?.IsLoaded == true)
+                {
+                    VSCodeConfigPath.Text = $"{Properties.StringResource.LoadedVSCSetting}:{Settings.VSCodeConfig.Value.ConfigFilePath}";
+                }
+                else VSCodeConfigPath.Text = Properties.StringResource.NotFound;
+            }
         }
     }
 }

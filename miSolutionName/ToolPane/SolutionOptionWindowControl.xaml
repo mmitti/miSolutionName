@@ -13,6 +13,7 @@
              Name="MyToolWindow">
     <UserControl.Resources>
         <local:ColorToBrushConverter  x:Key="ColorToBrushConverter"/>
+        <BooleanToVisibilityConverter x:Key="BoolVisibilityConverter" />
         <Style TargetType="{x:Type CheckBox}">
             <Setter Property="Margin" Value="0,0,0,8"></Setter>
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
@@ -41,6 +42,8 @@
         <TextBlock Text="{x:Static p:StringResource.EditorDescription}"></TextBlock>
         <Label Style="{StaticResource Header}" Content="{x:Static p:StringResource.General}"></Label>
         <CheckBox x:Name="Enable" FontSize="14" IsChecked="{Binding UserOptionEnable.Value}" Content="{x:Static p:StringResource.EditorEnable}"></CheckBox>
+        <CheckBox x:Name="EditorLoadVSCConfig" Content="{x:Static p:StringResource.EditorLoadVSCConfig}" IsChecked="{Binding UserOptionFindVSCExtConfig.Value}" Checked="UpdateVSConfig"></CheckBox>
+        <TextBlock x:Name="VSCodeConfigPath" Visibility="{Binding IsChecked, ElementName=EditorLoadVSCConfig, Converter={StaticResource BoolVisibilityConverter}}">Finding...</TextBlock>
         <Label Style="{StaticResource Header}" Content="{x:Static p:StringResource.Color}"></Label>
         <Grid IsEnabled="{Binding IsChecked, ElementName=Enable}">
             <Grid.ColumnDefinitions>

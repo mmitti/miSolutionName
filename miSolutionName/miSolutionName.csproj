@@ -68,6 +68,7 @@
       <DependentUpon>SolutionOptionWindowControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserOptions.cs" />
+    <Compile Include="VSCodeConfigLoader.cs" />
     <Compile Include="WindowWrapper\VSFloatingWindowWrapper.cs" />
     <Compile Include="WindowWrapper\VSMainWindowWrapper.cs" />
     <Compile Include="WindowWrapper\VSWindowWrapper.cs" />

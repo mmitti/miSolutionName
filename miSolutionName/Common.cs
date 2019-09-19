@@ -15,16 +15,21 @@ namespace miSolutionName
     {
         public static Color? TryConvertColor(string hexstr)
         {
-            if (string.IsNullOrWhiteSpace(hexstr)) return null;
             try
             {
-                var c = ColorTranslator.FromHtml(hexstr);
-                return Color.FromRgb(c.R, c.G, c.B);
+                return ConvertColor(hexstr);
             }
             catch
             {
             }
             return null;
+        }
+
+        public static Color ConvertColor(string hexstr)
+        {
+            if (string.IsNullOrWhiteSpace(hexstr)) throw new ArgumentNullException();
+            var c = ColorTranslator.FromHtml(hexstr);
+            return Color.FromRgb(c.R, c.G, c.B);
         }
 
         public static Color ConvertColor(string hexstr, Color current)
