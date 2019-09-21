@@ -63,10 +63,10 @@ Those settings will saved to .suo file. So you have to set per solution.
 ### VS Code config search rule/VS Codeの設定ファイルの探索ルール
 
 This extension find VS Code configure file in those rules.  
-(1) Move to parent directory of current soluton file.  
+(1) Move to parent directory of current solution file.  
 (2) If *.code-workspace is exists and contains color customization, load workspace setting.  
 (3) If  .vscode/settings.json is exists and contains color customization, load setting.json.  
-(4) Otherwize, Move to parent directory, and try (2)~(4).
+(4) Otherwize, Move to parent directory, and do (2)~(4).
 
 VS Codeの設定ファイルは以下のルールで探索します。  
 (1) 現在開いているソリューションファイルの親フォルダーに移動します。  
