@@ -31,6 +31,13 @@ namespace miSolutionName.WindowWrapper
                 var info_element = root_grid?.GetElement<ContentControl>("PART_SolutionInfoControlHost");
                 var border = info_element?.GetElement<Border>("");
                 var text = border?.GetElement<TextBlock>();
+                
+                // vs2019 16.4
+                if(text == null)
+                {
+                    border = info_element?.GetElement<Border>("TextBorder");
+                    text = border?.GetElement<TextBlock>();
+                }
 
                 if (new List<object>{ c, title_bar, root_grid, info_element, border, text }.Any(x => x == null))
                 {
